@@ -1,0 +1,7 @@
+## Interface: 11500
+## Title: Bento Runes
+## Notes: Simplifies the rune engraving frame.
+## Version: 1.0
+## Author: MIYANKO
+
+BentoRunes.lua
