@@ -261,7 +261,7 @@ local function RuneEventHandler(self, event, addonName)
 	end
 end
 
-local RuneEventFrame = CreateFrame("Frame")
-RuneEventFrame:RegisterEvent("ADDON_LOADED")
-RuneEventFrame:RegisterEvent("RUNE_UPDATED")
-RuneEventFrame:SetScript("OnEvent", RuneEventHandler)
+local RuneEvents = CreateFrame("Frame")
+RuneEvents:RegisterEvent("ADDON_LOADED")
+RuneEvents:RegisterEvent("RUNE_UPDATED")
+RuneEvents:SetScript("OnEvent", RuneEventHandler)
