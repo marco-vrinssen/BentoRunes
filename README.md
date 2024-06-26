@@ -4,7 +4,4 @@
 
 ## Features
 
-- This addon simplifies the runes frame by providing a straightforward, matrix-like layout positioned next to the character pane.
-- Easy Access: The rune frame is conveniently located next to the character pane for quick access.
-- One-Click Engraving: Right-clicking a rune directly engraves it without a confirmation message.
-- Visual Feedback: Engraved runes are highlighted accordingly for easy identification.
+This addon streamlines the runes interface, offering a matrix layout adjacent to the character pane for easy access, one-click engraving without confirmation, and visual highlights for engraved runes.
