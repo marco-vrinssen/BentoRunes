@@ -44,7 +44,7 @@ local function RuneButtonUpdate()
     local lastCategory = nil
     local categories = C_Engraving.GetRuneCategories(true, true)
 
-    local buttonSize = 36
+    local buttonSize = 32
     local scrollChildPadding = 4
     local buttonPadding = 4
 
