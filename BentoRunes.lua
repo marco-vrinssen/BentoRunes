@@ -1,3 +1,13 @@
+local function SetDesaturation(texture, desaturate)
+    if desaturate then
+        texture:SetDesaturated(true)
+        texture:SetVertexColor(0.8, 0.8, 0.8) -- Adjusts the color to be 50% desaturated
+    else
+        texture:SetDesaturated(false)
+        texture:SetVertexColor(1, 1, 1) -- Resets the color to normal
+    end
+end
+
 local function RuneButtonClick(mouseButton, abilityID, equipmentSlot)
     C_Engraving.CastRune(abilityID)
     if mouseButton == "RightButton" then
@@ -11,9 +21,6 @@ local function RuneButtonClick(mouseButton, abilityID, equipmentSlot)
         end
     end
 end
-
-
-
 
 local function EquippedRunesUpdate()
     local equippedRunes = {}
@@ -29,9 +36,6 @@ local function EquippedRunesUpdate()
     C_Engraving.EnableEquippedFilter(equippedFilterInitialllyEnabled)
     return equippedRunes
 end
-
-
-
 
 local function RuneButtonUpdate()
     local scrollFrame = EngravingFrame.scrollFrame
@@ -65,7 +69,7 @@ local function RuneButtonUpdate()
                 end
 
                 button.icon:SetTexture(rune.iconTexture)
-                button.icon:SetSize(button:GetWidth()+2, button:GetHeight()+2)
+                button.icon:SetSize(button:GetWidth() + 2, button:GetHeight() + 2)
                 button.icon:ClearAllPoints()
                 button.icon:SetPoint("CENTER", button, "CENTER", 0, 0)
                 button.tooltipName = rune.name
@@ -74,8 +78,10 @@ local function RuneButtonUpdate()
                 button.selectedTex:Hide()
                 if equippedRunes[rune.skillLineAbilityID] then
                     button.checkedTexture:Show()
+                    SetDesaturation(button.icon, false)
                 else
                     button.checkedTexture:Hide()
+                    SetDesaturation(button.icon, true)
                 end
                 button:ClearAllPoints()
                 if lastButton then
@@ -98,9 +104,6 @@ local function RuneButtonUpdate()
     end
 end
 
-
-
-
 local function RuneButtonAdd()
     local scrollFrame = EngravingFrame.scrollFrame
     local buttons = scrollFrame.buttons
@@ -115,9 +118,6 @@ local function RuneButtonAdd()
     end
 end
 
-
-
-
 local function RuneTextureUpdate()
     local buttons = EngravingFrame.scrollFrame.buttons
     for _, button in ipairs(buttons) do
@@ -128,9 +128,6 @@ local function RuneTextureUpdate()
         button.checkedTexture:Hide()
     end
 end
-
-
-
 
 local function EngravingFrameUpdate()
     EngravingFrame:ClearAllPoints()
@@ -151,18 +148,15 @@ local function EngravingFrameUpdate()
     EngravingFrameScrollFrameScrollBar:Hide()
 end
 
-
-
-
 local function RuneEventHandler(self, event, addonName)
-	if event == "ADDON_LOADED" and addonName == "Blizzard_EngravingUI" then
-		EngravingFrameUpdate()
-		RuneButtonAdd()
-		RuneTextureUpdate()    
-		hooksecurefunc("EngravingFrame_UpdateRuneList", RuneButtonUpdate)
-	elseif event == "RUNE_UPDATED" and EngravingFrame then
+    if event == "ADDON_LOADED" and addonName == "Blizzard_EngravingUI" then
+        EngravingFrameUpdate()
+        RuneButtonAdd()
+        RuneTextureUpdate()
+        hooksecurefunc("EngravingFrame_UpdateRuneList", RuneButtonUpdate)
+    elseif event == "RUNE_UPDATED" and EngravingFrame then
         RuneButtonUpdate()
-	end
+    end
 end
 
 local RuneEvents = CreateFrame("Frame")
