@@ -1,4 +1,4 @@
-## Interface: 11500
+## Interface: 11503
 ## Title: Bento Runes
 ## Notes: Simplifies the rune engraving frame.
 ## Version: 1.0
