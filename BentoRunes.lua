@@ -160,7 +160,7 @@ end
 
 local function EngravingFrameUpdate()
     EngravingFrame:ClearAllPoints()
-    EngravingFrame:SetWidth(280)
+    EngravingFrame:SetWidth(320)
     EngravingFrame:SetPoint("TOPLEFT", CharacterHandsSlot, "TOPRIGHT", 24, 0)
     EngravingFrame:SetPoint("BOTTOMLEFT", CharacterFrameTab5, "BOTTOMRIGHT", 24, 0)
     EngravingFrameScrollFrame:SetAllPoints("EngravingFrame")
